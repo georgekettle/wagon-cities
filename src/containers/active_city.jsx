@@ -4,21 +4,23 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-class City extends Component {
+class ActiveCity extends Component {
   constructor(props) {
     super(props);
-    console.log(`CITY LOADING ${props.name}`);
-  }
-
-  handleClick = () => {
-    let city = this.props.city;
-    return this.props.setActiveCity(city)
+    console.log(`ActiveCity LOADING ${props.name}`);
   }
 
   render() {
+    let activeCity = this.props.activeCity;
+    console.log(activeCity);
+    if (activeCity !== null) {
+      var src = "https://kitt.lewagon.com/placeholder/cities/" + activeCity.slug;
+    } else {
+      var src = "https://kitt.lewagon.com/placeholder/cities/paris";
+    }
     return(
-      <div className="list-group-item" onClick={this.handleClick}>
-        <h4>{this.props.name}</h4>
+      <div className="active-city">
+        <img src={src} />
       </div>
     );
   }
@@ -30,7 +32,6 @@ function mapStateToProps(state) {
   };
 }
 
-// Import actions so as to connect with props
 import { setActiveCity } from '../actions';
 
 function mapDispatchToProps(dispatch) {
@@ -40,4 +41,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(City);
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveCity);

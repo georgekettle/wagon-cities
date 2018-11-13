@@ -7,3 +7,18 @@ export function setCities() {
     type: 'SET_CITIES',
     payload: cities
 } }
+
+export function setActiveCity(city) {
+  // TODO: Api call! For now, simulate a DB
+  if (!city) {
+    const city = {
+      name: "Paris",
+      address: "16 Villa Gaudelet, 75011 Paris",
+      slug: "paris"
+    }
+  }
+  return {
+    type: 'SET_ACTIVE_CITY',
+    payload: city
+  }
+}

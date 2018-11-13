@@ -19,7 +19,7 @@ class CityList extends Component {
   renderCities = (cities) => {
     return cities.map(city => {
       return (
-          <City key={city.name} name={city.name} address={city.address} slug={city.slug}/>
+          <City key={city.name} city={city} name={city.name} address={city.address} slug={city.slug}/>
         );
     })
   }
